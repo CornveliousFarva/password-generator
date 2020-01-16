@@ -1,0 +1,38 @@
+*{
+    box-sizing: border-box;
+}
+
+header{
+    background-color: ghostwhite;
+}
+
+body{
+    background-color:gainsboro;
+    display: flex;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    padding: 15px;
+    min-height: auto;
+}
+
+Password{
+    margin: 0px;
+    height: 200px;
+    width: 700px;
+}
+
+GeneratePassword{
+    background-color: red;
+    color: white;
+    text-align: left;
+    height: 25px;
+}
+
+Copy{
+    background-color: lightgray;
+    color: white;
+    height: 25px;
+}
+
