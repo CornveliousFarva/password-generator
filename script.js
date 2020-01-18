@@ -5,7 +5,6 @@ var pwDigits = prompt("Enter the amount of characters for your password")
     } else if (pwDigits >128){
         alert ("Password length too long");
     }
-var passwordCharacters = document.querySelector("#Password Characters");
 var randomPassword = document.querySelector("#Password");
 var generatePassword = document.querySelector("Generate Password");
 var copyToClipboard = document.querySelector("Copy to Clipboard");
@@ -17,12 +16,13 @@ var copyToClipboard = document.querySelector("Copy to Clipboard");
 //var uppercaseArr = ["A,","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
 var valuesArr = ["0","1","2","3","4","5","6","7","8","9","!","@","%","^","&","*","?","-","+","=","#","a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","A,","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
 
-var password = "";
-
 //For loop for password generation
-    for(var i = 8; i <= 128; i++){
-        password = password + values.charAt(Math.floor(Math.random() * Math.floor(values.length)));
+    for (pwDigits >= 8; pwDigits <= 128; i ++){
+        password = values.charAt(Math.floor(Math.random() * Math.floor(values.length)));
     }
+
+    console.log(valuesArr);
+    
 
 
 //Add password to display area
