@@ -17,22 +17,34 @@ body{
     min-height: auto;
 }
 
-Password{
-    margin: 0px;
-    height: 200px;
-    width: 700px;
+
+
+#Buttons{
+    background-color: white;
+    background-origin: padding-box;
+    width: 500px;
+    text-align: center;
+    display: inline-block;
+    margin: auto;
 }
 
-GeneratePassword{
+#GeneratePassword{
     background-color: red;
+    font-size: large;
     color: white;
     text-align: left;
-    height: 25px;
+    display: inline-block;
+    border-radius: 50px;
+    width: fit-content;
 }
 
-Copy{
-    background-color: lightgray;
+#Copy{
+    background-color: gray;
     color: white;
-    height: 25px;
+    display: inline-block;
+    font-size: large;
+    border-radius: 50px;
+    text-align: right;
+    width: fit-content;
 }
 

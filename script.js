@@ -1,43 +1,38 @@
-//Create an array of numbers and letters
-var passwordCharacters = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "!" , "@" , "#" , "$" , "%" , "^", "&" , "*" , "?" , "<" , ">" , "-" , "{" , "}" , "a" , "b" , "c" , "d" , "e" , "f" , "g" , "h" , "i" , "j" , "k" , "l" , "m" , "n" , "o" , "p" , "q" , "r" , "s" , "t" , "u" , "v" , "w" , "x" , "y" , "z" , "A" , "B" , "C" , "D" , "E" , "F" , "G" , "H" , "I" , "J" , "K" , "L", "M" , "N" , "O", "P" , "Q" , "R" , "S" , "T" , "U" , "V" , "W" , "X", "Y" , "Z"] 
 //Declare variables
-var randomPasswordLength = math.floor(math.random() * (max - min + 1)) + min;
-var randomPassword = array(randomPasswordLength) =
-//Generate Password
-console.log(passwordCharacters);
-document.getElementById("generatePassword").addEventListener('click' , funtion()
-randomPassword = randomPasswordGenerate 128 , 8)
-//Copy to clipboard
-const copyToClipboard = str => {
-    const el = document.createElement('textarea');
-    el.value = str;
-    el.setAttribute('readonly' , '');
-    el.style.position = 'absolute';
-    el.style.left = "-999px" ;
-    document.body.appendChild(el);
-    const selected = document.getSelection().rangeCount > 0 ? document.getSelection().getRangeAt(0) : false;
-    el.select();
-    document.execCommand('copy');
-    document.body.removeChild(el);
-    if (selected) {
-        document.getSelection().removeAllRanges();
-        document.getSelection().addRange(selected);
+var pwDigits = prompt("Enter the amount of characters for your password")
+    if(pwDigits <8){
+        alert ("Password length too short");
+    } else if (pwDigits >128){
+        alert ("Password length too long");
     }
-    alert("Password copied to clipboard")
-};
-//Prompt for number of characters
-    prompt(
-        "Select size of password"
-    )
-    if randomPasswordLength  < 8 alert("Password Must Be At Least 8 Charaters Long")
-    else (getPassword)
-//Text area to print to
-document.getElementById("textArea").value = "Password"
-//Get random number
-function (getRandomNumber)
-//For Loop to pick from array
-for(){
-    document.write()
+var passwordCharacters = document.querySelector("#Password Characters");
+var randomPassword = document.querySelector("#Password");
+var generatePassword = document.querySelector("Generate Password");
+var copyToClipboard = document.querySelector("Copy to Clipboard");
+
+//Create an array of numbers and letters; I liked the way I had it set up, but it was complicating the code.
+//var numbersArr = ["0","1","2","3","4","5","6","7","8","9"]; 
+//var charactersArr = ["!","@","%","^","&","*","?","-","+","=","#"];
+//var lowercaseArr = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]; 
+//var uppercaseArr = ["A,","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+var valuesArr = ["0","1","2","3","4","5","6","7","8","9","!","@","%","^","&","*","?","-","+","=","#","a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","A,","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+
+var password = "";
+
+//For loop for password generation
+    for(var i = 8; i <= 128; i++){
+        password = password + values.charAt(Math.floor(Math.random() * Math.floor(values.length)));
+    }
+
+
+//Add password to display area
+document.getElementById("display").value = password
+
+//Copy to clipboard
+function copyToClipboard(){
+    document.getElementById("Password").select;
+    document.execCommand("copy");
+    alert("Password copied to clipboard");
 }
-//Print out chosen characters
-print
+
+
