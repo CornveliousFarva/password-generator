@@ -1,94 +1,37 @@
-//Declare variables
-var pwDigits = prompt("Enter the amount of characters for your password");
-
-var convertPromptDigits = Number(pwDigits);
-
-// console.log(pwDigits)
-    if(convertPromptDigits < 8){
-        alert ("Password length too short");
-    } else if (convertPromptDigits >128){
-        alert ("Password length too long");
-    }
-var randomPassword = document.querySelector("#Password");
-var generatePassword = document.querySelector("Generate Password");
-var copyToClipboard = document.querySelector("Copy to Clipboard");
-
-//Create an array of numbers and letters; I liked the way I had it set up, but it was complicating the code.
-//var numbersArr = ["0","1","2","3","4","5","6","7","8","9"]; 
-//var charactersArr = ["!","@","%","^","&","*","?","-","+","=","#"];
-//var lowercaseArr = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]; 
-//var uppercaseArr = ["A,","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
-var valuesArr = ["0","1","2","3","4","5","6","7","8","9","!","@","%","^","&","*","?","-","+","=","#","a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","A,","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
-var password = {};
-console.log(password);
-//For loop for password generation
-    for (let i = 0; i < convertPromptDigits; i ++){
-        password += valuesArr[Math.floor(Math.random() * valuesArr.length)]
-    }
-    console.log(password)
-
-    // console.log(valuesArr);
-    
-
-
-//Add password to display area
-    document.getElementById("GeneratePassword").onclick = function (){
-        document.getElementById("Generate Password")
+//Funtction to generate password
+function generate(){
+  //Set password length
+  let complextity = document.getElementById("slider").value;
+  //Set possible password values
+  let values ="ABCEFGHIJKLMONPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890!@#$%^&*=-_+?,."
+  let password = "";
+  //For loop to choose password characters
+    for(var i = 0; i <= complextity; i++){
+      password = password + values.charAt(Math.floor(Math.random() * Math.floor(values.length - 1)));
     }
 
-//document.getElementById("display").value = password
-
-//Copy to clipboard
-document.getElementById("Copy").onclick = function(){
-    document.getElementById("Copy To Clipboard")
+    //Add the password to the display area
+    document.getElementById("display").value = password;
 }
+//Set the default password size to 50
+  document.getElementById("length").innerHTML = "Length: 50";
 
-//Declare variables
-//var pwDigits = prompt("Enter the amount of characters for your password");
-//if (pwDigits === 8) {
-  //console.log("this works!");
-//} 
+//Function to set length based on slider position
+  document.getElementById("slider").oninput = function (){
 
-//var convertPromptDigits = Number(pwDigits);
-//if (pwDigits === 8) {
-  //console.log("that works!");
-//} 
-//var pwDigits = prompt("Enter the amount of characters for your password");
-  //  if(pwDigits === 8){
-    //    console.log(`${pwDigits}`);
-    //} else if (pwDigits >128){
-      //  alert ("Password length too long");
-    //}
-//var convertPromptDigits = Number(pwDigits);
-    //console.log(convertPromptDigits);
-//var passwordNumber = Number(pwDigits);
-//var randomPassword = document.querySelector("#Password");
-//var generatePassword = document.querySelector("Generate Password");
-//var copyToClipboard = document.querySelector("Copy to Clipboard");
+    if(document.getElementById("slider").value > 8){
+      document.getElementById("length").innerHTML = "Length: " +document.getElementById("slider").value;
+    }
+    else{
+      document.getElementById("length").innerHTML = "Length: 8"
+    }
+  }
 
-//Create an array of numbers and letters; I liked the way I had it set up, but it was complicating the code.
-//var numbersArr = ["0","1","2","3","4","5","6","7","8","9"]; 
-//var charactersArr = ["!","@","%","^","&","*","?","-","+","=","#"];
-//var lowercaseArr = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]; 
-//var uppercaseArr = ["A,","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
-//var valuesArr = ["0","1","2","3","4","5","6","7","8","9","!","@","%","^","&","*","?","-","+","=","#","a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","A,","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
-//var password = {}
-
-//For loop for password generation
-    //for (let i = 0; i < convertPromptDigits; i ++){
-        //password += valuesArr[Math.floor(Math.random() * valuesArr.length)]
-//}
-    
-
-
-//Add password to display area
-//document.getElementById("display").value = password
-
-//Copy to clipboard
-//function copyToClipboard(){
-    //document.getElementById("Password").select;
-    //document.execCommand("copy");
-    //alert("Password copied to clipboard");
-//}
+//Function to copy the password output to the clipboard
+function copyPassword(){
+  document.getElementById("display").select();
+  document.execCommand("Copy");
+  alert("Password copied to clipboard");
+}
 
 

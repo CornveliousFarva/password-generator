@@ -12,17 +12,17 @@
         <h1>Password Generator</h1>
     </header>
     <h2>Generate a Password</h2>
-    <textarea
-        readonly
-        id = "Password"
-        placeholder = "Your Secure Password"
-        aria-label = "Your Generated Password">
-    </textarea>
+    <div class="slideContainer">
+        <input type="range" min="8" max="128" value="50" name="slider" id="slider">
+      </div>
+      <br>
+    <input type="text" id="display">
     <br>
     <div id ="Buttons">
-       <button id="GeneratePassword">Generate Password</button>
-        <button id="Copy">Copy To Clipboard</button>
+        <button id="Generate" onclick="generate()">Generate Password</button>
+        <button id="Copy" onclick="copyPassword()">Copy to Clipboard</button>
     </div>
+    <div id="length"></div>
     
     <script src="./script.js"></script>
 </body>
