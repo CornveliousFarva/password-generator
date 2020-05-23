@@ -1,37 +1,86 @@
-//Funtction to generate password
-function generate(){
-  //Set password length
-  let complextity = document.getElementById("slider").value;
-  //Set possible password values
-  let values ="ABCEFGHIJKLMONPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890!@#$%^&*=-_+?,."
-  let password = "";
-  //For loop to choose password characters
-    for(var i = 0; i <= complextity; i++){
-      password = password + values.charAt(Math.floor(Math.random() * Math.floor(values.length - 1)));
-    }
+const resultEl = document.getElementById('result');
+const lengthEl = document.getElementById('length');
+const uppercaseEl = document.getElementById('uppercase');
+const lowercaseEl = document.getElementById('lowercase');
+const numbersEl = document.getElementById('numbers');
+const symbolsEl = document.getElementById('symbols');
+const generateEl = document.getElementById('generate');
+const clipboard = document.getElementById('clipboard');
 
-    //Add the password to the display area
-    document.getElementById("display").value = password;
+const randomFunc = {
+	lower: getRandomLower,
+	upper: getRandomUpper,
+	number: getRandomNumber,
+	symbol: getRandomSymbol
 }
-//Set the default password size to 50
-  document.getElementById("length").innerHTML = "Length: 50";
 
-//Function to set length based on slider position
-  document.getElementById("slider").oninput = function (){
+clipboard.addEventListener('click', () => {
+	const textarea = document.createElement('textarea');
+	const password = resultEl.innerText;
+	
+	if(!password) { return; }
+	
+	textarea.value = password;
+	document.body.appendChild(textarea);
+	textarea.select();
+	document.execCommand('copy');
+	textarea.remove();
+	alert('Password copied to clipboard');
+});
 
-    if(document.getElementById("slider").value > 8){
-      document.getElementById("length").innerHTML = "Length: " +document.getElementById("slider").value;
-    }
-    else{
-      document.getElementById("length").innerHTML = "Length: 8"
-    }
-  }
+generate.addEventListener('click', () => {
+	const length = +lengthEl.value;
+	const hasLower = lowercaseEl.checked;
+	const hasUpper = uppercaseEl.checked;
+	const hasNumber = numbersEl.checked;
+	const hasSymbol = symbolsEl.checked;
+	
+	resultEl.innerText = generatePassword(hasLower, hasUpper, hasNumber, hasSymbol, length);
+});
 
-//Function to copy the password output to the clipboard
-function copyPassword(){
-  document.getElementById("display").select();
-  document.execCommand("Copy");
-  alert("Password copied to clipboard");
+function generatePassword(lower, upper, number, symbol, length) {
+	let generatedPassword = '';
+	const typesCount = lower + upper + number + symbol;
+	const typesArr = [{lower}, {upper}, {number}, {symbol}].filter(item => Object.values(item)[0]);
+	
+	// Doesn't have a selected type
+	if(typesCount === 0) {
+		return '';
+	}
+	
+	// create a loop
+	for(let i=0; i<length; i+=typesCount) {
+		typesArr.forEach(type => {
+			const funcName = Object.keys(type)[0];
+			generatedPassword += randomFunc[funcName]();
+		});
+	}
+	
+	const finalPassword = generatedPassword.slice(0, length);
+	
+	return finalPassword;
 }
+
+function getRandomLower() {
+	return String.fromCharCode(Math.floor(Math.random() * 26) + 97);
+}
+
+function getRandomUpper() {
+	return String.fromCharCode(Math.floor(Math.random() * 26) + 65);
+}
+
+function getRandomNumber() {
+	return +String.fromCharCode(Math.floor(Math.random() * 10) + 48);
+}
+
+function getRandomSymbol() {
+	const symbols = '!@#$%^&*(){}[]=<>/,.'
+	return symbols[Math.floor(Math.random() * symbols.length)];
+}
+
+
+
+
+
 
 
