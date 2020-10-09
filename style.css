@@ -61,7 +61,7 @@ input[type=checkbox] {
 	top: 5px;
 	right: 5px;
 	height: 40px;
-	width: 40px;
+	width: fit-content
 }
 
 .btn {
